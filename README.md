@@ -17,7 +17,7 @@ npm i dht-keyvalue
 ## Example
 
 ```js
-const dhtKv = require('dht-kv')
+const dhtKv = require('dht-keyvalue')
 
 let opts = {
  keep: true, // default = true. Keep the DHT object alive in the mainline bittorrent network
@@ -50,7 +50,7 @@ for(item in items){
    console.log(value)
  
    // Update the key value
-   let updated = Math.random()
+   let updated = Math.random() // any value
    dkv.update(key, updated)
   })
  
