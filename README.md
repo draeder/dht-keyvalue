@@ -47,7 +47,7 @@ Update an item in DHT by key name. `callback` returns `true` when the update on 
 A future release will allow for updating the `key` as well.
 
 ## Examples
-### Put, get, update one record on DHT
+### One record: put, get, update on DHT
 ```js
 let item = [
  { key: 'my cool key', value: 'my cool key initial value' }
@@ -73,7 +73,7 @@ dkv.put(item, (hash, key) => {
  })
 })
 ```
-### Put, get, update multiple records on DHT
+### Multiple records: put, get, update on DHT
 ```js
 let items = [
  { key: "first key", value: "first value" }, 
