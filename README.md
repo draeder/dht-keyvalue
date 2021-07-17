@@ -1,4 +1,4 @@
-# dht-kv
+# dht-keyvalue
 Store key-value pairs on the mainline bittorrent DHT network, and retreive them by key lookup.
 
 This is a work in progress. This version is a minimal viable iteration of this project.
