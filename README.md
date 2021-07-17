@@ -1,11 +1,17 @@
 # dht-keyvalue
 Store key-value pairs on the mainline bittorrent DHT network, and retreive them by key lookup.
 
-This is a work in progress. This version is a minimal viable iteration of this project.
+## Status
+This is a work in progress, but is minimally viable for use as of this revision.
 
-It takes a little bit of time (seconds) to announce to DHT and retrieve the values.
-
-It probably should not be used in production at this time. More work is required for handling updates to the DHT objects. Improvements to usability and security are also needed.
+## Notes
+- A local hash table of key name and DHT hash address is maintained to allow for key name lookups
+- Any value datatype is accepted
+- dht-keyvalue will reject objects larger than 1000 Bytes
+- Initial puts on DHT may take some time (seconds)
+- Updates to existing records on DHT happen faster
+- Data contained in the record is plain text. Anyone with the hash address for the record can retrieve and view the data 
+- Consider encorporating your own encryption solution on top of dht-kevalue to protect the data
 
 # Install
 
