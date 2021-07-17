@@ -16,17 +16,17 @@ dkv.put(item, (hash, key) => {
  console.log('Successfully announced:', key, 'DHT address:', hash)
 
  // Now that it is announced, retrieve it from DHT
- dkv.get(item[0].key, value => {
+ dkv.get(key, value => {
   console.log(value)
  })
 
  // Update the key's value in DHT
  let newValue = 'Updated value for my cool key'
- dkv.update(item[0].key, newValue, updated => {
+ dkv.update(key, newValue, updated => {
   console.log('Updated in DHT', updated)
 
   // Retrieve the updated value
-  dkv.get(item[0].key, value => {
+  dkv.get(key, value => {
    console.log(value)
   })
  })
