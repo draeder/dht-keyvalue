@@ -32,6 +32,7 @@ const dkv = new dhtKv(opts)
 ```
 
 ### `dkv.put([items], [callback])`
+---
 Put a record or multiple records on DHT. `items` is an array of items with the following structure:
 
 ```js
@@ -41,9 +42,11 @@ Put a record or multiple records on DHT. `items` is an array of items with the f
 `callback` returns the DHT `hash` of the announced item and its `key` name.
 
 ### `dkv.get(key, [callback])`
+---
 Get an item stored on DHT by `key`. `callback` returns the item's `key` name and the DHT object's `value`.
 
 ### `dkv.update(key, newValue, [callback])`
+---
 Update an item in DHT by key name. `callback` returns `true` when the update on DHT was successful.
 
 A future release will allow for updating the `key` as well.
