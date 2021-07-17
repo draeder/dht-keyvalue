@@ -1,5 +1,5 @@
 {
-  "name": "dht-kv",
+  "name": "dht-keyvalue",
   "version": "0.0.1",
   "description": "Key-value store powered by bittorrent-dht",
   "main": "server.js",

@@ -10,7 +10,7 @@ It probably should not be used in production at this time. More work is required
 # Install
 
 ```js
-npm i dht-kv
+npm i dht-keyvalue
 ```
 
 # Usage
