@@ -7,7 +7,10 @@ let opts = {
 
 const dkv = new dhtKv(opts)
 
-let items = [{key: "first key", value: "first value"}, {key: "second key", value: "second value"}]
+let items = [
+ {key: "first key", value: "first value"}, 
+ {key: "second key", value: "second value"}
+]
 
 // log any errors
 dkv.on('error', err => {

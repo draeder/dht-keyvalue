@@ -1,6 +1,6 @@
 {
   "name": "dht-keyvalue",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Key-value store powered by bittorrent-dht",
   "main": "server.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/draeder/dht-kv-store.git"
+    "url": "git+https://github.com/draeder/dht-keyvalue.git"
   },
   "author": "Daniel Raeder",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/draeder/dht-kv-store/issues"
+    "url": "https://github.com/draeder/dht-keyvalue/issues"
   },
-  "homepage": "https://github.com/draeder/dht-kv-store#readme",
+  "homepage": "https://github.com/draeder/dht-keyvalue#readme",
   "dependencies": {
     "bittorrent-dht": "^10.0.1",
     "bittorrent-dht-sodium": "^1.2.0",
