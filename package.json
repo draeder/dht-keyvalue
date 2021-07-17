@@ -19,8 +19,7 @@
   "homepage": "https://github.com/draeder/dht-keyvalue#readme",
   "dependencies": {
     "bittorrent-dht": "^10.0.1",
-    "bittorrent-dht-sodium": "^1.2.0",
-    "events": "^3.3.0"
+    "bittorrent-dht-sodium": "^1.2.0"
   },
   "keywords": [
     "key value",

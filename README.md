@@ -14,8 +14,6 @@ npm i dht-keyvalue
 ```
 
 # Usage
-## Example
-
 ```js
 const dhtKv = require('dht-keyvalue')
 
@@ -25,35 +23,60 @@ let opts = {
 }
 
 const dkv = new dhtKv(opts)
+```
 
-let items = [{key: "first key", value: "first value"}, {key: "second key", value: "second value"}]
+## Examples
+### Put, get, update one record on DHT
+```js
+let item = [
+ { key: 'my cool key', value: 'my cool key initial value' }
+]
 
-// log any errors
-dkv.on('error', err => {
- console.log(err)
-})
+dkv.put(item, (hash, key) => {
+ console.log('Successfully announced:', key, 'DHT address:', hash)
 
-// Store the key/value pair(s) on DHT
-dkv.put(items)
-
-// Handle responses and do work
-for(item in items){
- let key = items[item].key
-
- dkv.on(key, hash => {
-
-  // Lookup the key
-  dkv.lookup(key)
- 
-  // Found the key 
-  dkv.on(hash, value => {
-   console.log(value)
- 
-   // Update the key value
-   let updated = Math.random() // any value
-   dkv.update(key, updated)
-  })
- 
+ // Now that it is announced, retrieve it from DHT
+ dkv.get(item[0].key, value => {
+  console.log(value)
  })
-}
+
+ // Update the key's value in DHT
+ let newValue = 'Updated value for my cool key'
+ dkv.update(item[0].key, newValue, updated => {
+  console.log('Updated in DHT', updated)
+
+  // Retrieve the updated value
+  dkv.get(item[0].key, value => {
+   console.log(value)
+  })
+ })
+})
+```
+### Put, get, update multiple records on DHT
+```js
+let items = [
+ { key: "first key", value: "first value" }, 
+ { key: "second key", value: "second value" },
+ //...
+]
+
+dkv.put(items, (hash, key) => {
+ console.log('Successfully announced:', key, 'DHT address:', hash)
+
+ // Now that it is announced, retrieve it from DHT
+ dkv.get(key, value => {
+  console.log(value)
+ })
+
+ // Update the key's value in DHT
+ let newValue = Math.random() // some updated value
+ dkv.update(key, newValue, updated => {
+  console.log('Updated in DHT', updated)
+
+  // Retrieve the updated value
+  dkv.get(key, value => {
+   console.log(value)
+  })
+ })
+})
 ```

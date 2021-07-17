@@ -1,23 +1,18 @@
 module.exports = DhtKv
 
-const EventEmitter = require('events').EventEmitter
-const inherits = require('inherits')
 const DHT = require('bittorrent-dht')
 const ed = require('bittorrent-dht-sodium')
 const dht = new DHT
 
-inherits(DhtKv, EventEmitter)
-
-let that
 function DhtKv(options){
- that = this
+ let that = this
 
  let keep = options.keep || true
  let keepalive = options.keepalive || 3600000
 
  let keyTable = []
 
- this.put = items => {
+ this.put = (items, cb) => {
 
   for(item in items){
    let text = JSON.stringify(items[item])
@@ -45,7 +40,8 @@ function DhtKv(options){
     text = JSON.parse(text)
     keyTable.push({key: name, hash: key, keypair, seq: opts.seq})
 
-    that.emit(name, key)
+    cb(key, name)
+    //that.emit(name, key)
     
     if(keep === true){
      setInterval(()=>{
@@ -56,6 +52,7 @@ function DhtKv(options){
   }
  }
 
+ /*
  this.get = key => {
   const dht = new DHT({ verify: ed.verify })
 
@@ -65,6 +62,7 @@ function DhtKv(options){
   })
 
  }
+ */
 
  this.refresh = key => {
   const dht = new DHT({ verify: ed.verify })
@@ -73,15 +71,22 @@ function DhtKv(options){
   })
  }
 
- this.lookup = key => {
+ this.get = (key, cb) => {
   for(item in keyTable){
    if(keyTable[item].key === key){
-    that.get(keyTable[item].hash)
+
+    const dht = new DHT({ verify: ed.verify })
+
+    dht.get(keyTable[item].hash, function (err, res) {
+     if(err) console.log('Error:', err)
+     cb(res.v.toString())
+    })
+
    }
   }
  }
 
- this.update = (name, data) => {
+ this.update = (name, data, cb) => {
   for(item in keyTable){
    if(keyTable[item].key === name){
 
@@ -112,7 +117,8 @@ function DhtKv(options){
      dht.put(opts, function (err, hash) {
       if(err) console.error('Error:', err)
       let key = hash.toString('hex')
-      that.emit(key, JSON.parse(text))
+      //that.emit(key, JSON.parse(text))
+      cb(true)
      })
 
     })
