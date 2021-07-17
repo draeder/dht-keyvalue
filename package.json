@@ -1,7 +1,7 @@
 {
   "name": "dht-keyvalue",
-  "version": "1.0.2",
-  "description": "Key-value store powered by bittorrent-dht",
+  "version": "1.0.3",
+  "description": "Store key-value pairs on the mainline bittorrent DHT network, and retreive/update them by key name.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
