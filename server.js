@@ -41,7 +41,6 @@ function DhtKv(options){
     keyTable.push({key: name, hash: key, keypair, seq: opts.seq})
 
     cb(key, name)
-    //that.emit(name, key)
     
     if(keep === true){
      setInterval(()=>{
@@ -51,18 +50,6 @@ function DhtKv(options){
    })
   }
  }
-
- /*
- this.get = key => {
-  const dht = new DHT({ verify: ed.verify })
-
-  dht.get(key, function (err, res) {
-   if(err) console.log('Error:', err)
-   that.emit(key, JSON.parse(res.v.toString()))
-  })
-
- }
- */
 
  this.refresh = key => {
   const dht = new DHT({ verify: ed.verify })
@@ -117,7 +104,6 @@ function DhtKv(options){
      dht.put(opts, function (err, hash) {
       if(err) console.error('Error:', err)
       let key = hash.toString('hex')
-      //that.emit(key, JSON.parse(text))
       cb(true)
      })
 
