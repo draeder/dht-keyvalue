@@ -1,25 +1,8 @@
-# dht-kv
-Store key-value pairs on mainline bittorrent DHT network, and retreive them by key lookup.
-
-This is a work in progress. This version is a minimal viable iteration of the project.
-
-It probably should not be used in production at this time. More work is required for handling updates to the DHT objects. Improvements to usability and security are also needed.
-
-# Install
-
-```js
-npm i dht-kv
-```
-
-# Usage
-## Example
-
-```js
-const dhtKv = require('dht-kv')
+const dhtKv = require('./server')
 
 let opts = {
  keep: true, // default = true. Keep the DHT object alive in the mainline bittorrent network
- keepalive: 3600000 // default = 3600000. Interval to refresh the DHT object (milliseconds)
+ keepalive: 3600000 // default = 3600000. Time to refresh the DHT object
 }
 
 const dkv = new dhtKv(opts)
@@ -34,7 +17,6 @@ dkv.on('error', err => {
 // Store the key/value pair(s) on DHT
 dkv.put(items)
 
-// Handle responses and do work
 for(item in items){
  let key = items[item].key
 
@@ -54,4 +36,3 @@ for(item in items){
  
  })
 }
-```
