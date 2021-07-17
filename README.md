@@ -1,7 +1,7 @@
 # dht-kv
 Store key-value pairs on the mainline bittorrent DHT network, and retreive them by key lookup.
 
-This is a work in progress. This version is a minimal viable iteration of the project.
+This is a work in progress. This version is a minimal viable iteration of this project.
 
 It probably should not be used in production at this time. More work is required for handling updates to the DHT objects. Improvements to usability and security are also needed.
 
