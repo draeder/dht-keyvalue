@@ -1,6 +1,6 @@
 {
   "name": "dht-keyvalue",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Store key-value pairs on the mainline bittorrent DHT network, and retreive/update them by key name.",
   "main": "server.js",
   "scripts": {
