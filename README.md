@@ -31,17 +31,17 @@ let opts = {
 const dkv = new dhtKv(opts)
 ```
 
-## `dkv.put([items], [callback])`
+### `dkv.put([items], [callback])`
 `items` is an array of items with the following structure:
 ```js
 [ { key: 'keyname', value: 'value' }, { ... }, { ... } ]
 ```
 `callback` returns the DHT `hash` of the announced item and its `key` name.
 
-## `dkv.get(key, [callback])`
+### `dkv.get(key, [callback])`
 Lookup an item stored on DHT. `callback` returns the item's `key` name and `value`.
 
-## `dkv.update(key, newValue, [callback])`
+### `dkv.update(key, newValue, [callback])`
 Update an item in DHT by key name. `callback` returns `true` when the update on DHT was successful.
 
 A future release will allow for updating the `key` as well.
