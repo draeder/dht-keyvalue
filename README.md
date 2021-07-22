@@ -8,11 +8,35 @@ dht-keyvalue allows you to put, get and update key-value pairs by key name on th
 
 A simple browser implementation using an express server backend is also available [here](https://github.com/draeder/dht-keyvalue-browser).
 
-## Install
-
+### Install & Usage
 ```js
 npm i dht-keyvalue
+
+const dhtKv = require('dht-keyvalue')
+
+let opts = {
+ keep: true, // default = true. Keep the DHT object alive in the mainline bittorrent network
+ keepalive: 3600000 // default = 3600000. Interval to refresh the DHT object (milliseconds)
+}
+
+const dkv = new dhtKv(opts)
 ```
+
+### Status
+This is a work in progress, but is viable for use as of this revision.
+
+### Notes
+Any datatype can be stored (objects, numbers, functions). The maximum record size is 1000 Bytes, larger will be rejected (this is a limitation of the mainline bittorrent DHT).
+
+Puts, gets and updates on DHT take some time (seconds). If speed is a factor for your application, DHT is probably not right for you.
+
+An internal hash table of the key names and DHT hash addresses is maintained to allow for key name lookups and updates. Presently, that hash table includes the keypair and sequence number needed to make mutable updates to extant records on the DHT. A future version will separate the keypair and sequence data. That way a clean hash table can be exposed so if it is shared with peers, they can also perform DHT lookups by key without leaking the sensitive data about the records.
+
+Another consideration for a future version is to provide built in JWT tokens to allow approved peers to make mutable updates to extant DHT objects.
+
+Data put to the DHT is stored in plain text. Anyone with the hash address for the record can potentially retrieve and view the data. Consider encorporating your own encryption solution on top of dht-kevalue to protect the data, if required.
+
+A future version will allow for expiring (deleting) individual records.
 
 ### Example
 #### One record
@@ -52,33 +76,7 @@ dkv.put(items, (hash, key) => {
 })
 ```
 
-### Status & Notes
-This is a work in progress, but is viable for use as of this revision.
-
-Any datatype can be stored (objects, numbers, functions). The maximum record size is 1000 Bytes, larger will be rejected (this is a limitation of the mainline bittorrent DHT).
-
-Puts, gets and updates on DHT take some time (seconds). If speed is a factor for your application, DHT is probably not right for you.
-
-An internal hash table of the key names and DHT hash addresses is maintained to allow for key name lookups and updates. Presently, that hash table includes the keypair and sequence number needed to make mutable updates to extant records on the DHT. A future version will separate the keypair and sequence data. That way a clean hash table can be exposed so if it is shared with peers, they can also perform DHT lookups by key without leaking the sensitive data about the records.
-
-Another consideration for a future version is to provide built in JWT tokens to allow approved peers to make mutable updates to extant DHT objects.
-
-Data put to the DHT is stored in plain text. Anyone with the hash address for the record can potentially retrieve and view the data. Consider encorporating your own encryption solution on top of dht-kevalue to protect the data, if required.
-
-A future version will allow for expiring (deleting) individual records.
-
-## Usage
-```js
-const dhtKv = require('dht-keyvalue')
-
-let opts = {
- keep: true, // default = true. Keep the DHT object alive in the mainline bittorrent network
- keepalive: 3600000 // default = 3600000. Interval to refresh the DHT object (milliseconds)
-}
-
-const dkv = new dhtKv(opts)
-```
-
+## API
 ### `dkv.put([items], [callback: (err, hash, key)])`
 Put a record or multiple records on DHT. `items` is an array of items with the following structure:
 
