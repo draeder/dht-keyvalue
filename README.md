@@ -10,6 +10,50 @@ dht-keyvalue allows you to put, get and update key-value pairs by key name on th
 
 A simple browser implementation using an express server backend is also available [here](https://github.com/draeder/dht-keyvalue-browser).
 
+# Install
+
+```js
+npm i dht-keyvalue
+```
+
+## Example
+### One record
+```js
+let items = [
+ { key: 'my cool key', value: 'my cool key initial value' }
+]
+```
+### Multiple records
+```js
+let items = [
+ { key: "first key", value: "first value" }, 
+ { key: "second key", value: "second value" },
+ //...
+]
+```
+### Put, Get, Update
+```js
+dkv.put(items, (hash, key) => {
+ console.log('Successfully announced:', key, 'DHT address:', hash)
+
+ // Now that it is announced, retrieve it from DHT
+ dkv.get(key, value => {
+  console.log(value)
+ })
+
+ // Update the key's value in DHT
+ let newValue = Math.random() // some updated value
+ dkv.update(key, newValue, updated => {
+  console.log('Updated in DHT', updated)
+
+  // Retrieve the updated value
+  dkv.get(key, value => {
+   console.log(value)
+  })
+ })
+})
+```
+
 ## Status & Notes
 This is a work in progress, but is viable for use as of this revision.
 
@@ -24,12 +68,6 @@ Another consideration for a future version is to provide built in JWT tokens to 
 Data put to the DHT is stored in plain text. Anyone with the hash address for the record can potentially retrieve and view the data. Consider encorporating your own encryption solution on top of dht-kevalue to protect the data, if required.
 
 A future version will allow for expiring (deleting) individual records.
-
-# Install
-
-```js
-npm i dht-keyvalue
-```
 
 # Usage
 ```js
@@ -87,40 +125,3 @@ Update an item in DHT by key name. `callback` returns `true` when the update on 
 
 A future release will allow for updating the `key` itself, along with updating multiple keys at once.
 
-## Example
-### One record
-```js
-let items = [
- { key: 'my cool key', value: 'my cool key initial value' }
-]
-```
-### Multiple records
-```js
-let items = [
- { key: "first key", value: "first value" }, 
- { key: "second key", value: "second value" },
- //...
-]
-```
-### Put, Get, Update
-```js
-dkv.put(items, (hash, key) => {
- console.log('Successfully announced:', key, 'DHT address:', hash)
-
- // Now that it is announced, retrieve it from DHT
- dkv.get(key, value => {
-  console.log(value)
- })
-
- // Update the key's value in DHT
- let newValue = Math.random() // some updated value
- dkv.update(key, newValue, updated => {
-  console.log('Updated in DHT', updated)
-
-  // Retrieve the updated value
-  dkv.get(key, value => {
-   console.log(value)
-  })
- })
-})
-```
