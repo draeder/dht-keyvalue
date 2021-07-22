@@ -55,7 +55,7 @@ let items = [
  //...
 ]
 ```
-### Example: 
+### Example
 ```js
 let items = [
  { key: "first key", value: "first initial value" }, 
