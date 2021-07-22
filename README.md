@@ -8,20 +8,6 @@ dht-keyvalue allows you to put, get and update key-value pairs by key name on th
 
 A simple browser implementation using an express server backend is also available [here](https://github.com/draeder/dht-keyvalue-browser).
 
-### Install & Usage
-```js
-npm i dht-keyvalue
-
-const dhtKv = require('dht-keyvalue')
-
-let opts = {
- keep: true, // default = true. Keep the DHT object alive in the mainline bittorrent network
- keepalive: 3600000 // default = 3600000. Interval to refresh the DHT object (milliseconds)
-}
-
-const dkv = new dhtKv(opts)
-```
-
 ### Status
 This is a work in progress, but is viable for use as of this revision.
 
@@ -38,7 +24,23 @@ Data put to the DHT is stored in plain text. Anyone with the hash address for th
 
 A future version will allow for expiring (deleting) individual records.
 
-### Example
+### Install
+```js
+npm i dht-keyvalue
+```
+
+### Usage
+```js
+const dhtKv = require('dht-keyvalue')
+
+let opts = {
+ keep: true, // default = true. Keep the DHT object alive in the mainline bittorrent network
+ keepalive: 3600000 // default = 3600000. Interval to refresh the DHT object (milliseconds)
+}
+
+const dkv = new dhtKv(opts)
+```
+
 #### One record
 ```js
 let items = [
@@ -53,8 +55,13 @@ let items = [
  //...
 ]
 ```
-#### Put, Get, Update
+### Example: 
 ```js
+let items = [
+ { key: "first key", value: "first initial value" }, 
+ { key: "second key", value: "second initial value" },
+ //...
+]
 dkv.put(items, (hash, key) => {
  console.log('Successfully announced:', key, 'DHT address:', hash)
 
