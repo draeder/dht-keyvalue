@@ -87,7 +87,7 @@ Update an item in DHT by key name. `callback` returns `true` when the update on 
 
 A future release will allow for updating the `key` itself, along with updating multiple keys at once.
 
-## Examples
+## Example
 ### One record
 ```js
 let items = [
