@@ -2,9 +2,7 @@
 Store key-value pairs on the mainline bittorrent DHT network, and retreive/update them by key name.
 
 ## About
-DHT libraries mostly focus on connecting peers together.
-
-What if you don't want to connect peers together with DHT, or you already have peers connected and just want to store and retrieve arbitrary data instead. That's where dht-keyvalue comes in. 
+DHT libraries mostly focus on connecting peers together. What if you don't want to connect peers together with DHT, or you already have peers connected and just want to store and retrieve arbitrary data instead? That's where dht-keyvalue comes in. 
 
 dht-keyvalue allows you to put, get and update key-value pairs by key name on the mainline bittorrent DHT network.
 
@@ -20,14 +18,14 @@ npm i dht-keyvalue
 #### One record
 ```js
 let items = [
- { key: 'my cool key', value: 'my cool key initial value' }
+ { key: 'my cool key', value: 'my cool key\'s value' }
 ]
 ```
 #### Multiple records
 ```js
 let items = [
- { key: "first key", value: "first value" }, 
- { key: "second key", value: "second value" },
+ { key: "first key", value: "first initial value" }, 
+ { key: "second key", value: "second initial value" },
  //...
 ]
 ```
