@@ -19,7 +19,9 @@
   "homepage": "https://github.com/draeder/dht-keyvalue#readme",
   "dependencies": {
     "bittorrent-dht": "^10.0.1",
-    "bittorrent-dht-sodium": "^1.2.0"
+    "bittorrent-dht-sodium": "^1.2.0",
+    "crypto": "^1.0.1",
+    "lodash": "^4.17.21"
   },
   "keywords": [
     "key value",
@@ -29,6 +31,5 @@
     "p2p",
     "bittorrent",
     "webtorrent"
-  ],
-  "devDependencies": {}
+  ]
 }
