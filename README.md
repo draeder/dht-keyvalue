@@ -62,6 +62,7 @@ let items = [
  { key: "second key", value: "second initial value" },
  //...
 ]
+
 dkv.put(items, (hash, key) => {
  console.log('Successfully announced:', key, 'DHT address:', hash)
 
@@ -126,5 +127,5 @@ Update an item in DHT by key name. `callback` returns `true` when the update on 
  })
 ```
 
-A future release will allow for updating the `key` itself, along with updating multiple keys at once.
+A future version will allow for updating the `key` itself, along with updating multiple keys at once.
 
