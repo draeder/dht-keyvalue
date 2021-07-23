@@ -1,6 +1,6 @@
 {
   "name": "dht-keyvalue",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Store key-value pairs on the mainline bittorrent DHT network, and retreive/update them by key name.",
   "main": "server.js",
   "scripts": {
@@ -19,9 +19,7 @@
   "homepage": "https://github.com/draeder/dht-keyvalue#readme",
   "dependencies": {
     "bittorrent-dht": "^10.0.1",
-    "bittorrent-dht-sodium": "^1.2.0",
-    "crypto": "^1.0.1",
-    "lodash": "^4.17.21"
+    "bittorrent-dht-sodium": "^1.2.0"
   },
   "keywords": [
     "key value",
@@ -31,5 +29,6 @@
     "p2p",
     "bittorrent",
     "webtorrent"
-  ]
+  ],
+  "devDependencies": {}
 }
