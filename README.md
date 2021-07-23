@@ -1,6 +1,7 @@
 # dht-keyvalue
 Store key-value pairs on the mainline bittorrent DHT network, and retreive/update them by key name.
 
+#
 Most available DHT libraries focus on connecting peers together. What if you don't want to connect peers together with DHT, or you already have peers connected and just want to store/retrieve arbitrary data instead? That's where dht-keyvalue comes in. 
 
 dht-keyvalue allows you to put, get and update key-value pairs by key name on the mainline bittorrent DHT network. A simple browser implementation using an express server backend is also available [here](https://github.com/draeder/dht-keyvalue-browser).
