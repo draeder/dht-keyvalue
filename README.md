@@ -11,7 +11,6 @@ dht-keyvalue allows you to put, get and update key-value pairs by key name on th
 npm i dht-keyvalue
 ```
 
-### Notes
 Any datatype can be stored (objects, numbers, functions). The maximum record size is 1000 Bytes, larger will be rejected (this is a limitation of the mainline bittorrent DHT).
 
 Puts, gets and updates on DHT take some time (seconds). If speed is a factor for your application, DHT is probably not right for you.
