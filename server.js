@@ -22,7 +22,7 @@ function DhtKv(options){
    if(found === undefined){
     keyTable.push({key: items[item].key, keypair: ed.keygen()})
    } else {
-    let err = `Error: A key with that name already exists. Not adding again: ${keyTable[key].key}`
+    let err = `Error: A key with that name already exists. Not adding again: ${items[item].key}`
     return cb(err)
    }
 

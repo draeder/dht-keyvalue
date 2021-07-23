@@ -27,11 +27,11 @@ dkv.put(items, (err, hash, key) => {
  let newValue = Math.random() // some updated value
 
  dkv.update(key, newValue, updated => {
-  console.log(`Upddate successful (${updated}) for key, ${key}. New value: ${newValue}`)
+  console.log(`Update successful (${updated}) for key, ${key}. New value: ${newValue}`)
 
   // Retrieve the updated value
   dkv.get(key, (err, value) => {
-   console.log(`Updated ${key}: ${value}`)
+   console.log(`Get successful for updated ${key}: ${value}`)
   })
 
  })
