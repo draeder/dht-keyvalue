@@ -11,13 +11,11 @@ dht-keyvalue allows you to put, get and update key-value pairs by key name on th
 npm i dht-keyvalue
 ```
 
-Any datatype can be stored (objects, numbers, functions). The maximum record size is 1000 Bytes, larger will be rejected (this is a limitation of the mainline bittorrent DHT).
+Any datatype can be stored (objects, numbers, functions). The maximum record size is 1000 Bytes; larger will be rejected (this is a limitation of the mainline bittorrent DHT).
 
 Puts, gets and updates on DHT take some time (seconds). If speed is a factor for your application, DHT is probably not right for you.
 
-An internal hash table of the key names and DHT hash addresses is maintained to allow for key name lookups and updates. Presently, that hash table includes the keypair and sequence number needed to make mutable updates to extant records on the DHT. A future version will separate the keypair and sequence data. That way a clean hash table can be exposed so if it is shared with peers, they can also perform DHT lookups by key without leaking the sensitive data about the records.
-
-Another consideration for a future version is to provide built in JWT tokens to allow approved peers to make mutable updates to extant DHT objects.
+An internal hash table of the key names and DHT hash addresses is maintained to allow for key name lookups and updates. That hash table includes the keypair and sequence number needed to make mutable updates to extant records on the DHT. A future version will separate the keypair and sequence data. That way, a clean hash table can be exposed, so if it is shared with peers, peers can also perform DHT lookups by key without leaking the sensitive data about the records. Another consideration for a future version is to provide built in JWT tokens to allow approved peers to make mutable updates to extant DHT objects.
 
 Data put to the DHT is stored in plain text. Anyone with the hash address for the record can potentially retrieve and view the data. Consider encorporating your own encryption solution on top of dht-kevalue to protect the data, if required.
 
