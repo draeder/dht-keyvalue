@@ -57,7 +57,8 @@ let items = [
  //...
 ]
 
-dkv.put(items, (hash, key) => {
+dkv.put(items, (err, hash, key) => {
+ if(err) console.log(err)
  console.log('Successfully announced:', key, 'DHT address:', hash)
 
  // Now that it is announced, retrieve it from DHT
