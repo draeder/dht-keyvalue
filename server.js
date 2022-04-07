@@ -52,7 +52,7 @@ function DhtKv(options){
     }
  
     dht.put(opts, function (err, hash) {
-     if(err) console.error('Error:', err)
+     //if(err) console.error('Error:', err)
      hash = hash.toString('hex')
      
      keyTable[item].hash = hash
@@ -129,7 +129,7 @@ function DhtKv(options){
      if(err) console.error('Error:', err)
 
      dht.put(opts, function (err, hash) {
-      if(err) console.error('Error:', err)
+      //if(err) console.error('Error:', err)
       let key = hash.toString('hex')
       cb(true)
      })
