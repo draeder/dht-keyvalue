@@ -15,7 +15,6 @@ let items = [
 
 // Put items in DHT
 dkv.put(items, (err, hash, key) => {
- if(err) console.log(err)
  console.log(`Successfully announced: ${key}, DHT address: ${hash}`)
 
  // Now that it is announced, retrieve it from DHT

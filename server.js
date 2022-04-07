@@ -52,7 +52,6 @@ function DhtKv(options){
     }
  
     dht.put(opts, function (err, hash) {
-     //if(err) console.error('Error:', err)
      hash = hash.toString('hex')
      
      keyTable[item].hash = hash
@@ -90,7 +89,6 @@ function DhtKv(options){
     const dht = new DHT({ verify: ed.verify })
 
     dht.get(keyTable[item].hash, function (err, res) {
-     if(err) console.log('Error:', err)
      if(res == null) return that.get(key, cb)
      cb(null, res.v.toString())
     })
@@ -126,10 +124,7 @@ function DhtKv(options){
 
     let key = keyTable[item].hash
     dht.get(key, function (err, res) {
-     if(err) console.error('Error:', err)
-
      dht.put(opts, function (err, hash) {
-      //if(err) console.error('Error:', err)
       let key = hash.toString('hex')
       cb(true)
      })
